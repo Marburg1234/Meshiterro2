@@ -7,5 +7,12 @@ Rails.application.routes.draw do
 
   get 'homes/about' => 'homes#about', as: 'about'
 
+  #get 'post_images/new'
+  #get 'post_images/show'
+  #get 'post_images/index'
+  #↓post_imagesの3つのルーティングを以下まとめる
+  resources :post_images, only: [:new, :index, :show]
+
+
 end
 
