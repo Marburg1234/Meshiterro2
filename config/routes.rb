@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #get 'post_images/show'
   #get 'post_images/index'
   #↓post_imagesの3つのルーティングを以下まとめる
-  resources :post_images, only: [:new, :create, :index, :show]
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
 
 
 end
