@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   #get 'homes/top'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -13,6 +14,9 @@ Rails.application.routes.draw do
   #↓post_imagesの3つのルーティングを以下まとめる
   resources :post_images, only: [:new, :create, :index, :show, :destroy]
 
-
+  #get 'users/show'
+  #get 'users/edit'
+  resources :users, only: [:show, :edit]
+  
 end
 
