@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # 以下はアソシエーションを持っている同士の記述方法
     # @userに関連づけられた投稿すべて(.post_imagesを取得する)
-    @post_images = @user.post_images
+    @post_images = @user.post_images.page(params[:page])
   end
 
   def edit

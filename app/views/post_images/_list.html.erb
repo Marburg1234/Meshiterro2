@@ -1,0 +1,27 @@
+<% post_images.each do |post_image| %>
+
+<!--@post_images ⇒ post_images-->
+  <div>
+    <!--画像にリンクを挿入して詳細ページへ遷移できるように指示-->
+    <%= link_to post_image_path(post_image.id) do %>
+    <!--画像を表示する-->
+      <%= image_tag post_image.get_image %>
+    <% end %>
+
+    <!--投稿内容詳細-->
+    <!--image_tag post_imageにActiveStorageで設定したimageを表示している-->
+    <!--post_imageは変数 each文で1つずつ取り出した-->
+    <!--get_imageはメソッド Modelで定義している-->
+    <p>投稿ユーザー画像：<%= image_tag post_image.user.get_profile_image(100,100) %></p>
+    <p>ショップ名：<%= post_image.shop_name %></p>
+    <!--post_image変数のshop_nameカラムを表示する-->
+    <p>説明：<%= post_image.caption %></p>
+    <!--post_image変数のcaptionカラムを表示する-->
+    <p>ユーザーネーム：<%= post_image.user.name %></p>
+    <!--post_image変数のusernameを表示する-->
+    <!--user.name と ドット.でつながっているのは、アソシエーションをしているデータ同士のため-->
+    <p><%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %></p>
+    <!--↑コメントの件数を表示する記述を追加した-->
+  </div>
+<% end %>
+<%= paginate post_images %>

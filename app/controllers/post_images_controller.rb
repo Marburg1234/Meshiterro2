@@ -17,12 +17,15 @@ class PostImagesController < ApplicationController
     # current_user.name : ログイン中のユーザーの名前を表示
     # current_user.email : ログイン中のユーザーのメールアドレスを表示
     # current~ はdeviseのヘルパーメソッドである。
-    @post_image.save
-    redirect_to post_images_path
+    if @post_image.save
+      redirect_to post_images_path
+    else
+      render :new
+    end
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.page(params[:page])
   end
 
   def show
